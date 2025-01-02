@@ -1,0 +1,436 @@
+# file prepared for sungrow logger 1000a via modbus
+# file written by Rafal Tomaszewski
+# last update: 2024-07-31
+#
+# Note: This YAML file will only work with Home Assistant >= 2023.10
+
+modbus:
+  - name: SungrowLOGGER
+    type: tcp
+    host: !secret sungrow_modbus_host_ip_247
+    port: !secret sungrow_modbus_port_247
+    sensors:
+      - name: Logger device type code
+        unique_id: logger_dev_code
+        device_address: !secret sungrow_modbus_slave_247
+        address: 7999 # reg 8000
+        input_type: input
+        data_type: uint16
+        scan_interval: 600
+
+      - name: Logger total devices connected
+        unique_id: logger_total_devices_connected
+        device_address: !secret sungrow_modbus_slave_247
+        address: 8004 # reg 8005
+        input_type: input
+        data_type: uint16
+        precision: 1
+        unit_of_measurement: Set
+        scan_interval: 600
+
+      - name: Logger total faulty devices
+        unique_id: logger_total_faulty_devices
+        device_address: !secret sungrow_modbus_slave_247
+        address: 8005 # reg 8006
+        input_type: input
+        data_type: uint16
+        precision: 1
+        unit_of_measurement: Set
+        scan_interval: 600
+
+      - name: Logger digital input state
+        unique_id: logger_digital_input_state
+        device_address: !secret sungrow_modbus_slave_247
+        address: 8020 # reg 8021
+        input_type: input
+        data_type: uint32
+        precision: 1
+        scan_interval: 600
+
+      - name: Logger ADC1 Voltage
+        unique_id: logger_adc1_voltage
+        device_address: !secret sungrow_modbus_slave_247
+        address: 8028 # reg 8029
+        input_type: input
+        data_type: int16
+        precision: 1
+        unit_of_measurement: V
+        device_class: voltage
+        state_class: measurement
+        scale: 0.01
+        scan_interval: 10
+
+      - name: Logger ADC1 Current
+        unique_id: logger_adc1_current
+        device_address: !secret sungrow_modbus_slave_247
+        address: 8029 # reg 8030
+        input_type: input
+        data_type: int16
+        precision: 1
+        unit_of_measurement: mA
+        device_class: current
+        state_class: measurement
+        scale: 0.01
+        scan_interval: 10
+
+      - name: Logger ADC2 Voltage
+        unique_id: logger_adc2_voltage
+        device_address: !secret sungrow_modbus_slave_247
+        address: 8030 # reg 8031
+        input_type: input
+        data_type: int16
+        precision: 1
+        unit_of_measurement: V
+        device_class: voltage
+        state_class: measurement
+        scale: 0.01
+        scan_interval: 10
+
+      - name: Logger ADC2 Current
+        unique_id: logger_adc2_current
+        device_address: !secret sungrow_modbus_slave_247
+        address: 8031 # reg 8032
+        input_type: input
+        data_type: int16
+        precision: 1
+        unit_of_measurement: mA
+        device_class: current
+        state_class: measurement
+        scale: 0.01
+        scan_interval: 10
+
+      - name: Logger ADC3 Voltage
+        unique_id: logger_adc3_voltage
+        device_address: !secret sungrow_modbus_slave_247
+        address: 8032 # reg 8033
+        input_type: input
+        data_type: int16
+        precision: 1
+        unit_of_measurement: V
+        device_class: voltage
+        state_class: measurement
+        scale: 0.01
+        scan_interval: 10
+
+      - name: Logger ADC4 Voltage
+        unique_id: logger_adc4_voltage
+        device_address: !secret sungrow_modbus_slave_247
+        address: 8033 # reg 8034
+        input_type: input
+        data_type: int16
+        precision: 1
+        unit_of_measurement: V
+        device_class: voltage
+        state_class: measurement
+        scale: 0.01
+        scan_interval: 10
+
+      - name: Logger ADC3 Current
+        unique_id: logger_adc3_current
+        device_address: !secret sungrow_modbus_slave_247
+        address: 8034 # reg 8035
+        input_type: input
+        data_type: int16
+        precision: 1
+        unit_of_measurement: mA
+        device_class: current
+        state_class: measurement
+        scale: 0.01
+        scan_interval: 10
+
+      - name: Logger ADC4 Current
+        unique_id: logger_adc4_current
+        device_address: !secret sungrow_modbus_slave_247
+        address: 8035 # reg 8036
+        input_type: input
+        data_type: int16
+        precision: 1
+        unit_of_measurement: mA
+        device_class: current
+        state_class: measurement
+        scale: 0.01
+        scan_interval: 10
+
+      - name: Logger Max total nominal active power
+        unique_id: logger_max_total_nominal_active_power
+        device_address: !secret sungrow_modbus_slave_247
+        address: 8057 # reg 8058
+        input_type: input
+        data_type: int16
+        precision: 1
+        unit_of_measurement: kW
+        device_class: power
+        state_class: measurement
+        scale: 1.0
+        scan_interval: 10
+
+      - name: Logger Min total nominal active power
+        unique_id: logger_min_total_nominal_active_power
+        device_address: !secret sungrow_modbus_slave_247
+        address: 8058 # reg 8059
+        input_type: input
+        data_type: int16
+        precision: 1
+        unit_of_measurement: kW
+        device_class: power
+        state_class: measurement
+        scale: 1.0
+        scan_interval: 10
+
+      - name: Logger Max total nominal reactive power
+        unique_id: logger_max_total_nominal_reactive_power
+        device_address: !secret sungrow_modbus_slave_247
+        address: 8059 # reg 8060
+        input_type: input
+        data_type: int16
+        precision: 1
+        unit_of_measurement: kVar
+        device_class: power
+        state_class: measurement
+        scale: 1.0
+        scan_interval: 10
+
+      - name: Logger Min total nominal reactive power
+        unique_id: logger_min_total_nominal_reactive_power
+        device_address: !secret sungrow_modbus_slave_247
+        address: 8060 # reg 8061
+        input_type: input
+        data_type: int16
+        precision: 1
+        unit_of_measurement: kvar
+        device_class: power
+        state_class: measurement
+        scale: 1.0
+        scan_interval: 10
+
+      - name: Logger inverter preset active power
+        unique_id: logger_inverter_preset_active_power
+        device_address: !secret sungrow_modbus_slave_247
+        address: 8065 # reg 8066
+        input_type: input
+        data_type: uint16
+        precision: 1
+        unit_of_measurement: kW
+        device_class: power
+        state_class: measurement
+        scale: 1.0
+        scan_interval: 10
+
+      - name: Logger inverter preset reactive power
+        unique_id: logger_inverter_preset_reactive_power
+        device_address: !secret sungrow_modbus_slave_247
+        address: 8066 # reg 8067
+        input_type: input
+        data_type: uint16
+        precision: 1
+        unit_of_measurement: kvar
+        device_class: power
+        state_class: measurement
+        scale: 1.0
+        scan_interval: 10
+
+      - name: Logger state
+        unique_id: logger_state
+        device_address: !secret sungrow_modbus_slave_247
+        address: 8067 # reg 8068
+        input_type: input
+        data_type: uint16
+        scan_interval: 10
+
+      - name: Logger unlatch state
+        unique_id: logger_unlatch_state
+        device_address: !secret sungrow_modbus_slave_247
+        address: 8068 # reg 8069
+        input_type: input
+        data_type: uint16
+        scan_interval: 10
+
+      - name: Logger total active power
+        unique_id: logger_total_active_power
+        device_address: !secret sungrow_modbus_slave_247
+        address: 8069 # reg 8070
+        input_type: input
+        data_type: uint64
+        precision: 1
+        unit_of_measurement: W
+        device_class: power
+        state_class: measurement
+        scale: 1
+        scan_interval: 10
+
+      - name: Logger daily power yield
+        unique_id: logger_daily_power_yield
+        device_address: !secret sungrow_modbus_slave_247
+        address: 8073 # reg 8074
+        input_type: input
+        data_type: uint32
+        swap: word
+        precision: 1
+        unit_of_measurement: kWh
+        device_class: energy
+        state_class: measurement
+        scale: 0.1
+        scan_interval: 10
+
+      - name: Logger Total rective power
+        unique_id: logger_total_reactive_power
+        device_address: !secret sungrow_modbus_slave_247
+        address: 8075 # reg 8076
+        input_type: input
+        data_type: int64
+        precision: 1
+        unit_of_measurement: var
+        device_class: power
+        state_class: measurement
+        scale: 1
+        scan_interval: 10
+
+      - name: Logger total power yield
+        unique_id: logger_total_power_yield
+        device_address: !secret sungrow_modbus_slave_247
+        address: 8079 # reg 8080
+        input_type: input
+        data_type: uint64
+        precision: 1
+        unit_of_measurement: kWh
+        device_class: energy
+        state_class: measurement
+        scale: 0.1
+        scan_interval: 10
+
+      - name: Logger Min adjustable active power
+        unique_id: logger_min_adjustable_active_power
+        device_address: !secret sungrow_modbus_slave_247
+        address: 8083 # reg 8084
+        input_type: input
+        data_type: uint32
+        swap: word
+        precision: 1
+        unit_of_measurement: kW
+        device_class: power
+        state_class: measurement
+        scale: 0.1
+        scan_interval: 10
+        
+      - name: Logger Max adjustable active power
+        unique_id: logger_max_adjustable_active_power
+        device_address: !secret sungrow_modbus_slave_247
+        address: 8085 # reg 8086
+        input_type: input
+        data_type: uint32
+        swap: word
+        precision: 1
+        unit_of_measurement: kW
+        device_class: power
+        state_class: measurement
+        scale: 0.1
+        scan_interval: 10
+
+      - name: Logger Min adjustable reactive power
+        unique_id: logger_min_adjustable_reactive_power
+        device_address: !secret sungrow_modbus_slave_247
+        address: 8087 # reg 8088
+        input_type: input
+        data_type: int32
+        swap: word
+        precision: 1
+        unit_of_measurement: kvar
+        device_class: power
+        state_class: measurement
+        scale: 0.1
+        scan_interval: 10
+        
+      - name: Logger Max adjustable reactive power
+        unique_id: logger_max_adjustable_reactive_power
+        device_address: !secret sungrow_modbus_slave_247
+        address: 8089 # reg 8090
+        input_type: input
+        data_type: int32
+        swap: word
+        precision: 1
+        unit_of_measurement: kvar
+        device_class: power
+        state_class: measurement
+        scale: 0.1
+        scan_interval: 10
+
+
+# Holding Registers for Logger 1000
+
+      - name: Logger Set On Off For Sub Inverter Array
+        unique_id: logger_set_on_off_sub_inverter
+        device_address: !secret sungrow_modbus_slave_247
+        address: 8001 # reg 8002
+        input_type: holding
+        data_type: uint16
+        precision: 1
+        unit_of_measurement: Set
+        scan_interval: 10
+
+      - name: Logger Set Active Power Value For Sub Inverter Array
+        unique_id: logger_set_active_sub_inverter_power_value
+        device_address: !secret sungrow_modbus_slave_247
+        address: 8002 # reg 8003
+        input_type: holding
+        data_type: uint32
+        precision: 1
+        unit_of_measurement: kW
+        device_class: power
+        state_class: measurement
+        scale: 0.1
+        scan_interval: 10
+
+      - name: Logger Set Active Power Ratio For Sub Inverter Array
+        unique_id: logger_set_active_sub_inverter_power_ratio
+        device_address: !secret sungrow_modbus_slave_247
+        address: 8004 # reg 8005
+        input_type: holding
+        data_type: uint32
+        precision: 1
+        unit_of_measurement: "%"
+        device_class: power_factor
+        state_class: measurement
+        scale: 0.1
+        scan_interval: 10
+
+      - name: Logger Set Reactive Power Value For Sub Inverter Array
+        unique_id: logger_set_reaactive_sub_inverter_power_value
+        device_address: !secret sungrow_modbus_slave_247
+        address: 8006 # reg 8007
+        input_type: holding
+        data_type: int32
+        swap: word
+        precision: 1
+        unit_of_measurement: kvar
+        device_class: reactive_power
+        state_class: measurement
+        scale: 0.1
+        scan_interval: 10
+
+      - name: Logger Set Reactive Power Ratio For Sub Inverter Array
+        unique_id: logger_set_reactive_sub_inverter_power_ratio
+        device_address: !secret sungrow_modbus_slave_247
+        address: 8008 # reg 8009
+        input_type: holding
+        data_type: int32
+        swap: word
+        precision: 1
+        unit_of_measurement: "%"
+        device_class: power_factor
+        state_class: measurement
+        scale: 0.1
+        scan_interval: 10
+
+      - name: Logger Set Active Power Factor
+        unique_id: logger_set_active_power_factor
+        device_address: !secret sungrow_modbus_slave_247
+        address: 8010 # reg 8011
+        input_type: holding
+        data_type: int32
+        swap: word
+        precision: 1
+        unit_of_measurement: "%"
+        device_class: power_factor
+        state_class: measurement
+        scale: 0.001
+        scan_interval: 10
